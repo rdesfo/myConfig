@@ -1,2 +1,4 @@
 set editing-mode vi
 set show-all-if-ambiguous on
+
+alias reperl = 'perl -de0'

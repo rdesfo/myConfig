@@ -36,3 +36,6 @@ let g:github_token = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 "http://vim.wikia.com/wiki/Calculator_and_code_evaluation_using_Perl
 :command! -nargs=+ Calc :perl VIM::Msg(eval{<args>})
 
+" Move swap file to tmp dir
+set swapfile
+set dir=~/tmp
