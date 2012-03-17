@@ -32,10 +32,12 @@ autocmd Filetype tex imap <C-i> <Plug>Tex_InsertItemOnThisLine
 let g:github_user = 'rdesfo'
 let g:github_token = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
-"Do Math in Vim
-"http://vim.wikia.com/wiki/Calculator_and_code_evaluation_using_Perl
-:command! -nargs=+ Calc :perl VIM::Msg(eval{<args>})
+set mousehide " Hide mouse after chars typed
 
-" Move swap file to tmp dir
-set swapfile
-set dir=~/tmp
+" Formatting
+set ts=2
+set shiftwidth=2 " Tabs under smart indent
+set autoindent
+set smarttab
+set expandtab
+set cindent
