@@ -102,14 +102,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-#---------------------------------
-# Source .profile
-#---------------------------------
-
-#if [ -f /home/ryan/.profile ]; then
-#        . /home/ryan/.profile   # --> Read /home/ryan/.profile, if #present.
-#fi
-
 # rvm
 [[ -s "/home/ryan/.rvm/scripts/rvm" ]] && source "/home/ryan/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
