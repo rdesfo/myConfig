@@ -17,6 +17,12 @@ myManageHook = composeAll
   , className =? "Yakuake" --> doFloat
   , className =? "plasma" --> doFloat
   , className =? "Plasma" --> doFloat
+  , className =? "plasma-desktop" --> doFloat
+  , className =? "Plasma-desktop" --> doFloat
+  , className =? "krunner" --> doFloat
+  , className =? "ksplashsimple" --> doFloat
+  , className =? "ksplashqml" --> doFloat
+  , className =? "ksplashx" --> doFloat
   ]
 
 myLayout = tiled ||| Mirror tiled ||| Full
