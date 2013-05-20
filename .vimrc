@@ -20,17 +20,10 @@ filetype indent off
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
 " The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
-"let g:Tex_CompileRule_dvi='latex -src-specials -interaction=nonstopmode $*'
-"let g:Tex_ViewRule_dvi = 'xdvik'
-let g:Tex_DefaultTargetFormat = 'pdf'
-let g:Tex_ViewRule_pdf = 'open -a Preview.app'
-autocmd Filetype tex imap <C-i> <Plug>Tex_InsertItemOnThisLine
-"let g:Tex_ItemStyle_list = '\item <++>'
-
-"Gist.vim token
-let g:github_user = 'rdesfo'
-let g:github_token = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+" let g:tex_flavor='latex'
+" let g:Tex_DefaultTargetFormat = 'pdf'
+" let g:Tex_ViewRule_pdf = 'open -a Preview.app'
+" autocmd Filetype tex imap <C-i> <Plug>Tex_InsertItemOnThisLine
 
 set mousehide " Hide mouse after chars typed
 
