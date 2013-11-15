@@ -3,7 +3,11 @@ Config { font = "-misc-fixed-10-*-*-*-*-*-*-*-*"
        , fgColor = "grey"
        , border = TopB
        , borderColor = "black"
-       , position = Top
+       , allDesktops = False
+       , overrideRedirect = False
+       , hideOnStart = False
+       , persistent = True
+       , position = TopW L 90
        , lowerOnStart = False
        , commands = [ Run Weather "KPWM" ["-t","Portland: <tempF>F  <skyCondition>","-L","32","-H","80","--normal","green","--high","red","--low","lightblue"] 36000
                     , Run MultiCpu ["-t","Cpu: <autototal>%"] 10

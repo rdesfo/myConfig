@@ -12,9 +12,15 @@ import XMonad.Layout.NoBorders ( noBorders, smartBorders )
 import XMonad.Layout.Spacing  
 import System.IO
 
+-- To find the property name associated with a program, use
+-- > xprop | grep WM_CLASS
+-- and click on the client you're interested in.
+
 myManageHook = composeAll
   [ className =? "yakuake" --> doFloat
   , className =? "Yakuake" --> doFloat
+  , className =? "Kmix" --> doFloat
+  , className =? "kmix" --> doFloat
   , className =? "plasma" --> doFloat
   , className =? "Plasma" --> doFloat
   , className =? "plasma-desktop" --> doFloat
@@ -23,25 +29,45 @@ myManageHook = composeAll
   , className =? "ksplashsimple" --> doFloat
   , className =? "ksplashqml" --> doFloat
   , className =? "ksplashx" --> doFloat
+  , resource  =? "Games"         --> doShift "6:game"
+  , className =? "VirtualBox"    --> doShift "4:vm"
+  , className =? "steam"         --> doShift "5:media"
+  , className =? "stalonetray"   --> doIgnore
   ]
 
 myLayout = tiled ||| Mirror tiled ||| Full
     where
-    -- default tiling algorithm partitions the --screen into two panes  
+    -- default tiling algorithm partitions the 
+    --screen into two panes  
     tiled = spacing 5 $ Tall nmaster delta ratio
     nmaster = 1 -- The default number of windows in the master pane 
     ratio = 1/2 -- Default proportion of screen occupied by master pane
     delta = 5/100  -- % of screen to increment by when resizing panes
   
+myWorkspaces = ["1:term","2:web","3:mail","4:vm","5:media","6:game"] ++ map show [7..9]
+
+logHook' xmproc = do
+  dynamicLogWithPP $ xmobarPP
+    { ppOutput = hPutStrLn xmproc
+    , ppTitle = xmobarColor "green" "" . shorten 100
+    }
+
+myTrayBar = "stalonetray -i 18 --max-geometry 8x1-0+0 --icon-gravity E --geometry 8x1-0+0 -bg '#2e3436' --sticky --skip-taskbar"
   
 main = do
-  xmonad $ desktopConfig 
+  xmproc <- spawnPipe "killall xmobar ; xmobar ~/.xmonad/xmobar.hs"
+  traybar <- spawnPipe "killall stalonetray ; stalonetray -i 18 --max-geometry 8x1-0+0 --icon-gravity E --geometry 8x1-0+0 -bg black --sticky --skip-taskbar"
+  xmonad $ ewmh desktopConfig 
     { modMask = mod4Mask
+    , terminal = "konsole"
     , manageHook = manageDocks <+> myManageHook <+> manageHook desktopConfig
     , borderWidth = 1
     , normalBorderColor = "#abc123"
     , focusedBorderColor = "#456def"
     , layoutHook = avoidStruts myLayout
+    , workspaces = myWorkspaces
+    , startupHook = startupHook desktopConfig
+    , logHook     = logHook' xmproc
     }
     `additionalKeysP` myKeys
 
