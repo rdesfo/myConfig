@@ -44,19 +44,17 @@ myLayout = tiled ||| Mirror tiled ||| Full
     ratio = 1/2 -- Default proportion of screen occupied by master pane
     delta = 5/100  -- % of screen to increment by when resizing panes
   
-myWorkspaces = ["1:term","2:web","3:mail","4:vm","5:media","6:game"] ++ map show [7..9]
+myWorkspaces = ["1:grnd0","2:web","3:mail","4:vm","5:media","6:game"] ++ map show [7..9]
 
 logHook' xmproc = do
   dynamicLogWithPP $ xmobarPP
     { ppOutput = hPutStrLn xmproc
-    , ppTitle = xmobarColor "green" "" . shorten 100
+    , ppTitle = xmobarColor "green" "" . shorten 80
     }
 
-myTrayBar = "stalonetray -i 18 --max-geometry 8x1-0+0 --icon-gravity E --geometry 8x1-0+0 -bg '#2e3436' --sticky --skip-taskbar"
-  
 main = do
   xmproc <- spawnPipe "killall xmobar ; xmobar ~/.xmonad/xmobar.hs"
-  traybar <- spawnPipe "killall stalonetray ; stalonetray -i 18 --max-geometry 8x1-0+0 --icon-gravity E --geometry 8x1-0+0 -bg black --sticky --skip-taskbar"
+  traybar <- spawnPipe "killall stalonetray ; stalonetray -i 16 --max-geometry 8x1-0+0 --icon-gravity E --geometry 8x1-0+0 -bg black --sticky --skip-taskbar --config $HOME/.xmonad/stalonetrayrc"
   xmonad $ ewmh desktopConfig 
     { modMask = mod4Mask
     , terminal = "konsole"

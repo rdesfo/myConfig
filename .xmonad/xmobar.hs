@@ -7,7 +7,7 @@ Config { font = "-misc-fixed-10-*-*-*-*-*-*-*-*"
        , overrideRedirect = False
        , hideOnStart = False
        , persistent = True
-       , position = TopW L 90
+       , position = TopW L 91
        , lowerOnStart = False
        , commands = [ Run Weather "KPWM" ["-t","Portland: <tempF>F  <skyCondition>","-L","32","-H","80","--normal","green","--high","red","--low","lightblue"] 36000
                     , Run MultiCpu ["-t","Cpu: <autototal>%"] 10
@@ -16,6 +16,7 @@ Config { font = "-misc-fixed-10-*-*-*-*-*-*-*-*"
                     , Run Battery ["BAT0"] 10
                     , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
                     , Run StdinReader
+                    , Run Com "kquitapp" ["plasma-desktop", "&&", "sleep", "15s", "&&", "plasma-desktop"] "" 0
                     ]
        , sepChar = "%"
        , alignSep = "}{"
