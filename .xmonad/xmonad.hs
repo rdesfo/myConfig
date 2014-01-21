@@ -17,22 +17,27 @@ import System.IO
 -- and click on the client you're interested in.
 
 myManageHook = composeAll
-  [ className =? "yakuake" --> doFloat
-  , className =? "Yakuake" --> doFloat
-  , className =? "Kmix" --> doFloat
-  , className =? "kmix" --> doFloat
-  , className =? "plasma" --> doFloat
-  , className =? "Plasma" --> doFloat
+  [ className =? "yakuake"        --> doFloat
+  , className =? "Yakuake"        --> doFloat
+  , className =? "Kmix"           --> doFloat
+  , className =? "kmix"           --> doFloat
+  , className =? "plasma"         --> doFloat
+  , className =? "Plasma"         --> doFloat
   , className =? "plasma-desktop" --> doFloat
   , className =? "Plasma-desktop" --> doFloat
-  , className =? "krunner" --> doFloat
-  , className =? "ksplashsimple" --> doFloat
-  , className =? "ksplashqml" --> doFloat
-  , className =? "ksplashx" --> doFloat
-  , resource  =? "Games"         --> doShift "6:game"
-  , className =? "VirtualBox"    --> doShift "4:vm"
-  , className =? "steam"         --> doShift "5:media"
-  , className =? "stalonetray"   --> doIgnore
+  , className =? "krunner"        --> doFloat
+  , className =? "ksplashsimple"  --> doFloat
+  , className =? "ksplashqml"     --> doFloat
+  , className =? "ksplashx"       --> doFloat
+  , className =? "stalonetray"    --> doIgnore
+  , className =? "VirtualBox"     --> doShift "4:vm"
+  , className =? "steam"          --> doShift "5:media"
+  , className =? "Steam"          --> doShift "5:media"
+  , className =? "pidgin"         --> doShift "4:im"
+  , className =? "Pidgin"         --> doShift "4:im"
+  , className =? "Thunderbird"    --> doShift "3:mail"
+  , className =? "vlc"            --> doShift "7:media"
+  , className =? "kaffiene"            --> doShift "7:media"
   ]
 
 myLayout = tiled ||| Mirror tiled ||| Full
@@ -44,9 +49,9 @@ myLayout = tiled ||| Mirror tiled ||| Full
     ratio = 1/2 -- Default proportion of screen occupied by master pane
     delta = 5/100  -- % of screen to increment by when resizing panes
   
-myWorkspaces = ["1:grnd0","2:web","3:mail","4:vm","5:media","6:game"] ++ map show [7..9]
+myWorkspaces = ["1:grnd0","2:web","3:mail","4:im","5:", "6:","7:media","8:games","9:steam"]
 
-logHook' xmproc = do
+logHook' xmproc =
   dynamicLogWithPP $ xmobarPP
     { ppOutput = hPutStrLn xmproc
     , ppTitle = xmobarColor "green" "" . shorten 80
