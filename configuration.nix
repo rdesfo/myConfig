@@ -63,6 +63,11 @@
     thunderbird   # email
   ];
 
+  virtualisation.docker = {
+    enable = true;
+    storageDriver = "btrfs";
+  };
+
   programs.bash = {
     enableCompletion = true;
     interactiveShellInit = "set -o vi";
@@ -107,7 +112,7 @@
     description = "ryan desfosses";
     isNormalUser = true;
     uid = 1000;
-    extraGroups = ["wheel" "networkmanager"];
+    extraGroups = ["wheel" "networkmanager" "docker"];
   };
 
   # The NixOS release to be compatible with for stateful data such as databases.
