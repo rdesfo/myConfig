@@ -13,6 +13,10 @@
   # Use the gummiboot efi boot loader.
   boot.loader.gummiboot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.extraModprobeConfig = ''
+    options snd slots=snd-hda-intel
+  '';
+
 
   #blacklist i2c_hid so touchpad will work
   boot.blacklistedKernelModules = [ "i2c_hid" ];
