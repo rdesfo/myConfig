@@ -51,16 +51,20 @@
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     wget
-    vim           # text editor
-    git           # version control
-    xclip         # clipboard
-    arandr        # GUI frontend for xrandr
-    pavucontrol   # sound control
-    rxvt_unicode  # terminal
-    pass          # password manager
-    gnupg         # encryption
-    firefox       # web browser
-    thunderbird   # email
+    libnotify
+    keybinder
+    vim                      # text editor
+    git                      # version control
+    xclip                    # clipboard
+    arandr                   # GUI frontend for xrandr
+    pavucontrol              # sound control
+    rxvt_unicode             # terminal
+    pass                     # password manager
+    gnupg                    # encryption
+    firefox                  # web browser
+    thunderbird              # email
+    zeal                     # documentation
+    haskellPackages.stack    # haskell packages
   ];
 
   virtualisation.docker = {
