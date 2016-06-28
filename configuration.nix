@@ -61,6 +61,7 @@
     rxvt_unicode             # terminal
     pass                     # password manager
     gnupg                    # encryption
+    dmenu                    # launcher
     firefox                  # web browser
     thunderbird              # email
     zeal                     # documentation
