@@ -98,12 +98,16 @@
     layout = "us";
   };
 
+  services.xserver.displayManager = {
+    sessionCommands = ''
+      feh --bg-fill /home/ryan/Pictures/Firefox_wallpaper.png &
+    '';
+  };
+
   services.xserver.windowManager.xmonad = {
     enable = true;
     enableContribAndExtras = true;
   };
-
-  services.xserver.desktopManager.xfce.enable = false;
 
   services.xserver.synaptics = {
     enable = true;
