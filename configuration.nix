@@ -21,6 +21,9 @@
   #blacklist i2c_hid so touchpad will work
   boot.blacklistedKernelModules = [ "i2c_hid" ];
 
+  # clean /tmp dir
+  boot.cleanTmpDir = true;
+
   # steam controller
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", ATTRS{idVendor}=="28de", MODE="0666"
