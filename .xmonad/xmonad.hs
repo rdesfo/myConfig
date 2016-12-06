@@ -5,7 +5,7 @@ import XMonad.Hooks.ManageDocks    -- dock/tray mgmt
 import XMonad.Hooks.DynamicLog     -- statusbar 
 import XMonad.Actions.CycleWS      -- workspace-switching
 import XMonad.Util.EZConfig        -- append key/mouse bindings
-import XMonad.Util.Run(spawnPipe)
+import XMonad.Util.Run(safeSpawn, spawnPipe)
 import XMonad.Config.Xfce
 import XMonad.Layout
 import XMonad.Layout.NoBorders ( noBorders, smartBorders )
@@ -21,19 +21,17 @@ myManageHook = composeAll
   , className =? "Xfdesktop"      --> doFloat
   , className =? "xfce4-panel"    --> doFloat
   , className =? "Xfce4-panel"    --> doFloat
+  , className =? "xfce4-terminal" --> doFloat
+  , className =? "Xfce4-terminal" --> doFloat
   , className =? "xfdesktop"      --> doIgnore
   , className =? "Xfdesktop"      --> doIgnore
-  , className =? "stalonetray"    --> doIgnore
   , className =? "VirtualBox"     --> doShift "6:vm"
   , className =? "steam"          --> doShift "5:media"
   , className =? "Steam"          --> doShift "5:media"
-  , className =? "pidgin"         --> doShift "4:im"
-  , className =? "Pidgin"         --> doShift "4:im"
   , className =? "Thunderbird"    --> doShift "3:mail"
   , className =? "Mail"           --> doShift "3:mail"
   , className =? "vlc"            --> doShift "7:media"
   , className =? "Vlc"            --> doShift "7:media"
-  , className =? "kaffiene"       --> doShift "7:media"
   ]
 
 myLayout = tiled ||| Mirror tiled ||| Full
@@ -47,18 +45,11 @@ myLayout = tiled ||| Mirror tiled ||| Full
   
 myWorkspaces = ["1:grnd0","2:web","3:mail","4:im","5:", "6:vm","7:media","8:games","9:steam"]
 
-logHook' xmproc =
-  dynamicLogWithPP $ xmobarPP
-    { ppOutput = hPutStrLn xmproc
-    , ppTitle = xmobarColor "green" "" . shorten 80
-    }
-
 main = do
-  xmproc <- spawnPipe "killall xmobar ; xmobar ~/.xmonad/xmobar.hs"
-  traybar <- spawnPipe "killall stalonetray ; stalonetray -i 20 --max-geometry 8x1-0+0 --icon-gravity E --geometry 8x1-0+0 -bg '#'242424 --sticky --skip-taskbar"
-  xmonad $ ewmh desktopConfig 
+  xfcePanel <- spawnPipe "xfce4-panel -r"
+  xmonad $ ewmh xfceConfig 
     { modMask = mod4Mask
-    , terminal = "xfce4-terminal"
+    , terminal = "urxvt"
     , manageHook = manageDocks <+> myManageHook <+> manageHook desktopConfig
     , borderWidth = 1
     , normalBorderColor = "#abc123"
@@ -66,12 +57,13 @@ main = do
     , layoutHook = smartBorders . avoidStruts $ myLayout
     , workspaces = myWorkspaces
     , startupHook = startupHook desktopConfig
-    , logHook     = logHook' xmproc
+--    , logHook     = logHook' xmproc
     }
     `additionalKeysP` myKeys
 
 myKeys = [ ("M-<Tab>"    , toggleWS                  ) -- toggle last workspace (super-tab)
          , ("M-<Right>"  , nextWS                    ) -- go to next workspace
          , ("M-b"        , sendMessage ToggleStruts  ) -- toggle the status bar gap
+         , ("M-d"        , safeSpawn "xfce4-terminal" ["--drop-down"]  ) -- toggle the status bar gap
          , ("M-<Left>"   , prevWS                    ) -- go to prev workspace
          ]
