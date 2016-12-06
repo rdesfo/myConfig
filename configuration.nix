@@ -77,7 +77,8 @@
 
   virtualisation.docker = {
     enable = true;
-    storageDriver = "btrfs";
+    storageDriver = "overlay2";
+    extraOptions = "--userns-remap=default";
   };
 
   programs.bash = {
@@ -122,16 +123,33 @@
     twoFingerScroll = true;
   };
 
+  users.groups.dockremap.gid = 10000;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.extraUsers.ryan = {
-    home = "/home/ryan";
-    description = "ryan desfosses";
-    isNormalUser = true;
-    uid = 1000;
-    extraGroups = ["wheel" "networkmanager" "docker"];
+  users.users = {
+    ryan = {
+      home = "/home/ryan";
+      createHome = true;
+      isNormalUser = true;
+      uid = 1001;
+      group = "users";
+      extraGroups = ["wheel" "networkmanager" "docker"];
+    };
+    dockremap = {
+      isSystemUser = true;
+      uid = 10000;
+      group = "dockremap";
+      subUidRanges = [
+        { startUid = 100000; count = 65536; }
+      ];
+      subGidRanges = [
+        { startGid = 100000; count = 65536; }
+      ];
+    };
   };
 
-  # The NixOS release to be compatible with for stateful data such as databases.
-  system.stateVersion = "16.03";
+  security.apparmor.enable = true;
 
+  # The NixOS release to be compatible with for stateful data such as databases.
+  system.stateVersion = "16.09";
 }
