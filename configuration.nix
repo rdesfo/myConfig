@@ -10,13 +10,17 @@
       ./hardware-configuration.nix
     ];
 
-  # Use the gummiboot efi boot loader.
-  boot.loader.gummiboot.enable = true;
+  # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.extraModprobeConfig = ''
-    options snd slots=snd-hda-intel
-  '';
-
+  boot.loader.grub.device = "/dev/sda";
+  boot.initrd.luks.devices = [
+    {
+      name = "luksroot";
+      device = "/dev/sda3";
+      preLVM = true;
+    }
+  ];
 
   #blacklist i2c_hid so touchpad will work
   boot.blacklistedKernelModules = [ "i2c_hid" ];
