@@ -53,6 +53,10 @@
   time.timeZone = "America/New_York";
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.emacs = pkgs.lib.overrideDerivation (pkgs.emacs.override {
+      withGTK2 = true;
+      withGTK3 = false;
+  });
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
@@ -73,6 +77,10 @@
     thunderbird              # email
     zeal                     # documentation
     haskellPackages.stack    # haskell packages
+
+    # emacs
+    (import ./emacs.nix { inherit pkgs; })
+
   ];
 
   virtualisation.docker = {
