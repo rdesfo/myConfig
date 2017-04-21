@@ -1,0 +1,137 @@
+
+* Startup
+
+Turns off startup message and tool-bar
+
+#+BEGIN_SRC emacs-lisp
+  (setq inhibit-startup-message t)
+  (tool-bar-mode -1)
+#+END_SRC
+
+verify with just y and n
+
+#+BEGIN_SRC emacs-lisp
+(fset 'yes-or-no-p 'y-or-n-p)
+#+END_SRC
+
+* Org
+  
+Babel setting allow the execution of code inside a file
+
+#+BEGIN_SRC emacs-lisp
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((sh . t)
+   (python . t)
+  ))
+#+END_SRC
+
+Org mode doesn't export to markdown unless you set it
+
+#+BEGIN_SRC emacs-lisp
+ '(org-export-backends (quote (ascii html icalendar latex md odt)))
+#+END_SRC
+
+Below list the files for agenda
+  
+#+BEGIN_SRC emacs-lisp
+ '(org-agenda-files (quote ("~/Documents/org/new-journal.org")))
+#+END_SRC
+
+* Theme
+  
+Use =tsdh-dark= theme
+
+#+BEGIN_SRC emacs-lisp
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(ansi-color-names-vector
+   ["#2e3436" "#a40000" "#4e9a06" "#c4a000" "#204a87" "#5c3566" "#729fcf" "#eeeeec"])
+ '(custom-enabled-themes (quote (tsdh-dark)))
+)
+#+END_SRC
+
+* Packages
+
+** evil
+
+=evil= provides vim like key binding
+
+#+BEGIN_SRC emacs-lisp
+(use-package evil
+  :ensure t
+  :config
+  (progn
+    (require 'evil)
+    (evil-mode 1)
+  ))
+#+END_SRC
+
+** try
+
+=try= allows you to try packages without fully installing them
+
+#+BEGIN_SRC emacs-lisp
+(use-package try
+  :ensure t)
+#+END_SRC
+
+** intero
+
+   [[https://commercialhaskell.github.io/intero/][Intero]] uses stack to install the required version of Intero for each project
+
+#+BEGIN_SRC emacs-lisp
+(use-package intero
+  :ensure t
+  :config
+    (add-hook 'haskell-mode-hook 'intero-mode)
+)
+#+END_SRC
+
+** web-mode
+
+#+BEGIN_SRC emacs-lisp
+(use-package web-mode
+  :ensure t
+  :config
+    (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+    (setq web-mode-engines-alist
+      '(("css" . (ac-source-css-property))
+        ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
+    (setq web-mode-enable-auto-closing t)
+)
+#+END_SRC
+
+** elfeed
+
+=elfeed= is a rss feed reader
+
+#+BEGIN_SRC emacs-lisp
+(use-package elfeed
+  :ensure t
+  :bind (:map elfeed-search-mode-map
+          ("q" . bjm/elfeed-save-db-and-bury)
+          ("Q" . bjm/elfeed-save-db-and-bury)
+          ("j" . mx/make-and-run-elfeed-hydra)
+          ("J" . mx/make-and-run-elfeed-hydra)
+          ("m" . elfeed-toggle-star)
+          ("M" . elfeed-toggle-star)
+  ))
+
+;; (use-package elfeed-goodies
+;;   :ensure t
+;;   :config
+;;   (elfeed-goodies/setup))
+
+(use-package elfeed-org
+  :ensure t
+  :config
+  (elfeed-org)
+  (setq rmh-elfeed-org-files (list "~/.emacs.d/elfeed.org")))
+
+#+END_SRC
