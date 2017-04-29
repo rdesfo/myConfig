@@ -21,8 +21,10 @@ Babel setting allow the execution of code inside a file
 #+BEGIN_SRC emacs-lisp
 (org-babel-do-load-languages
  'org-babel-load-languages
- '((sh . t)
+ '((shell . t)
+   (haskell . t)
    (python . t)
+   (emacs-lisp . t)
   ))
 #+END_SRC
 
