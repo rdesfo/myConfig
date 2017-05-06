@@ -170,7 +170,10 @@ Use =tsdh-dark= theme
 ** magit
 
    =?= in magit window will bring up the =magit-dispatch-popup=,
-   which provides a useful list of commands
+   which provides a useful list of commands.
+   
+   To select a section from the unstage changes =C-space=, select lines,
+   and stage with =s=.
 
    #+BEGIN_SRC emacs-lisp
      (use-package magit
