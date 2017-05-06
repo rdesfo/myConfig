@@ -166,3 +166,15 @@ Use =tsdh-dark= theme
   (setq rmh-elfeed-org-files (list "~/.emacs.d/elfeed.org")))
 
 #+END_SRC
+
+** magit
+
+   =?= in magit window will bring up the =magit-dispatch-popup=,
+   which provides a useful list of commands
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package magit
+       :ensure t
+       :config 
+       (global-set-key (kbd "C-c m") 'magit-status))
+   #+END_SRC
