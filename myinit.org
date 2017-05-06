@@ -37,7 +37,7 @@ Org mode doesn't export to markdown unless you set it
 Below list the files for agenda
   
 #+BEGIN_SRC emacs-lisp
- '(org-agenda-files (quote ("~/Documents/org/new-journal.org")))
+ '(org-agenda-files (quote ("~/Documents/org/journal.org")))
 #+END_SRC
 
 * Theme
