@@ -106,6 +106,9 @@ Use =tsdh-dark= theme
 #+END_SRC
 
 ** web-mode
+  
+   [[http://web-mode.org/][web-mode]] major mode for editing web templates aka HTML files embedding parts (CSS/JavaScript)
+   and blocks (pre rendered by client/server side engines).
 
 #+BEGIN_SRC emacs-lisp
 (use-package web-mode
