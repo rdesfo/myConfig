@@ -119,6 +119,16 @@ Use =tsdh-dark= theme
       '(("css" . (ac-source-css-property))
         ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
     (setq web-mode-enable-auto-closing t)
+
+** docker-mode
+
+   juse use it for syntax highlighting
+
+   #+BEGIN_SRC emacs-lisp
+   (use-package dockerfile-mode
+     :ensure t )
+   #+END_SRC
+
 )
 #+END_SRC
 
