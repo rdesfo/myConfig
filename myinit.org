@@ -186,3 +186,13 @@ Use =tsdh-dark= theme
        :config 
        (global-set-key (kbd "C-c m") 'magit-status))
    #+END_SRC
+** yaml
+   
+   [[https://github.com/yoshiki/yaml-mode][yaml-mode]] - Simple major mode to edit YAML file for emacs
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package yaml-mode
+       :ensure t
+       :config 
+       (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
+   #+END_SRC
