@@ -119,6 +119,11 @@ Use =tsdh-dark= theme
       '(("css" . (ac-source-css-property))
         ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
     (setq web-mode-enable-auto-closing t)
+    (setq web-mode-code-indent-offset 2)
+    (setq web-mode-enable-current-element-highlight t)
+    (setq web-mode-enable-current-column-highlight t)
+)
+#+END_SRC
 
 ** docker-mode
 
