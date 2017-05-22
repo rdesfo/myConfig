@@ -14,6 +14,12 @@ verify with just y and n
 (fset 'yes-or-no-p 'y-or-n-p)
 #+END_SRC
 
+Show images when opening a file.
+
+#+BEGIN_SRC emacs-lisp
+(setq org-startup-with-inline-images t)
+#+END_SRC
+
 * Org
   
 Babel setting allow the execution of code inside a file
