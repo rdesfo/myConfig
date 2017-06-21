@@ -81,6 +81,11 @@ Use =tsdh-dark= theme
 
 =evil= provides vim like key binding
 
+   | Key binding        | Description                                        |
+   |--------------------+----------------------------------------------------|
+   | =v,   i,  ( or  )= | selects everyting inside also works with [, {, ... |
+   | =*=                | selects  all  of  of  word                         |
+
 #+BEGIN_SRC emacs-lisp
 (use-package evil
   :ensure t
