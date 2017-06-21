@@ -20,6 +20,13 @@ Show images when opening a file.
 (setq org-startup-with-inline-images t)
 #+END_SRC
 
+use [[https://www.emacswiki.org/emacs/IbufferMode][iBuffer]]
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(autoload 'ibuffer "ibuffer" "List buffers." t)
+#+END_SRC
+
 * Org
   
 Babel setting allow the execution of code inside a file
