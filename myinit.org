@@ -27,6 +27,13 @@ use [[https://www.emacswiki.org/emacs/IbufferMode][iBuffer]]
 (autoload 'ibuffer "ibuffer" "List buffers." t)
 #+END_SRC
 
+follow sym-link to this file. for more information
+=C-h v vc-follow-symlinks=
+
+#+BEGIN_SRC emacs-lisp
+(setq vc-follow-symlinks t)
+#+END_SRC
+
 * Org
   
    | Key binding   | Description                     |
