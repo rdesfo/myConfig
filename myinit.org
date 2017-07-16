@@ -52,7 +52,15 @@ Babel setting allow the execution of code inside a file
   ))
 #+END_SRC
 
-Org mode doesn't export to markdown unless you set it
+As of release 8.0, Org-mode has transitioned to a new export framework
+
+   | Key binding | Description |
+   |-------------+-------------|
+   | =C-C C-e=   | org-export  |
+
+#+BEGIN_SRC emacs-lisp
+(use-package ox-md)
+#+END_SRC
 
 #+BEGIN_SRC emacs-lisp
  '(org-export-backends (quote (ascii html icalendar latex md odt)))
