@@ -162,6 +162,20 @@ Use =tsdh-dark= theme
 )
 #+END_SRC
 
+** emmet-mode
+
+   [[https://github.com/smihica/emmet-mode][emmet-mode]] is a minor mode providing support html and css abbreviation.
+
+   | Key binding | Description              |
+   |-------------+--------------------------|
+   | =C-j=       | runs =emmet-expand-line= |
+
+   #+BEGIN_SRC emacs-lisp
+   (use-package emmet-mode
+     :ensure t)
+   (add-hook 'web-mode-hook 'emmet-mode)
+   #+END_SRC
+
 ** docker-mode
 
    juse use it for syntax highlighting
