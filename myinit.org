@@ -333,3 +333,12 @@ Use =tsdh-dark= theme
    :config
    (global-set-key [f8] 'neotree-toggle))
    #+END_SRC
+
+* Useful Snippets
+
+  To find current major mode buffer paste the following
+  line in the buffer and =C-x C-e= to execute the code
+
+  #+BEGIN_EXAMPLE emacs-lisp
+  (message "%s" major-mode)
+  #+END_EXAMPLE
