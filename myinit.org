@@ -309,3 +309,27 @@ Use =tsdh-dark= theme
        :config 
        (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
    #+END_SRC
+** neotree
+
+   [[https://www.emacswiki.org/emacs/NeoTree][neotree]] - emacs tree plugin like NerdTree for vim
+
+   | Key binding       | Description                                                                       |
+   |-------------------+-----------------------------------------------------------------------------------|
+   | n                 | next line                                                                         |
+   | p                 | previous line                                                                     |
+   | SPC or RET or TAB | Open current item if it is a file. Fold/Unfold current item if it is a directory. |
+   | g                 | Refresh                                                                           |
+   | A                 | Maximize/Minimize the NeoTree Window                                              |
+   | H                 | Toggle display hidden files                                                       |
+   | C-c C-n           | Create a file or create a directory if filename ends with a ‘/’                   |
+   | C-c C-d           | Delete a file or a directory.                                                     |
+   | C-c C-r           | Rename a file or a directory.                                                     |
+   | C-c C-c           | Change the root directory.                                                        |
+   | C-c C-p           | Copy a file or a directory.                                                       |
+
+   #+BEGIN_SRC emacs-lisp
+   (use-package neotree
+   :ensure t
+   :config
+   (global-set-key [f8] 'neotree-toggle))
+   #+END_SRC
