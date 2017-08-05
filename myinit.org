@@ -34,6 +34,12 @@ follow sym-link to this file. for more information
 (setq vc-follow-symlinks t)
 #+END_SRC
 
+disable tabs
+
+#+BEGIN_SRC emacs-lisp
+(setq-default indent-tabs-mode nil)
+#+END_SRC
+
 * Org
   
    | Key binding   | Description                     |
