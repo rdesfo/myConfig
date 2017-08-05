@@ -52,6 +52,11 @@ disable tabs
 Babel setting allow the execution of code inside a file
 
 #+BEGIN_SRC emacs-lisp
+(use-package ox-icalendar)
+(use-package ox-md)
+(use-package org)
+:ensure t
+:config
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((shell . t)
@@ -59,20 +64,7 @@ Babel setting allow the execution of code inside a file
    (python . t)
    (emacs-lisp . t)
   ))
-#+END_SRC
-
-As of release 8.0, Org-mode has transitioned to a new export framework
-
-   | Key binding | Description |
-   |-------------+-------------|
-   | =C-C C-e=   | org-export  |
-
-#+BEGIN_SRC emacs-lisp
-(use-package ox-md)
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
- '(org-export-backends (quote (ascii html icalendar latex md odt)))
+'(org-export-backends (quote (ascii html icalendar latex md odt)))
 #+END_SRC
 
 Below list the files for agenda
