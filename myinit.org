@@ -136,6 +136,8 @@ Use =tsdh-dark= theme
    | C-c C-k     | Clear REPL                                        |
    | C-c C-z     | Switch to and from the REPL                       |
 
+   Intero's repl uses eshell.  To run [[https://www.gnu.org/software/emacs/manual/html_mono/eshell.html#History][previous commands]] use =M-p= and =M-n=
+
 #+BEGIN_SRC emacs-lisp
 (use-package intero
   :ensure t
