@@ -47,6 +47,12 @@ or tab character nearest to the right window edge.
   (setq-default word-wrap t)
 #+END_SRC
 
+=global-auto-revert-mode= will automatically revert your files to what's on disk.
+
+#+BEGIN_SRC emacs-lisp
+global-auto-revert-mode 1
+#+END_SRC
+
 * Org
   
    | Key binding   | Description                                      |
