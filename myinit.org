@@ -40,6 +40,13 @@ disable tabs
 (setq-default indent-tabs-mode nil)
 #+END_SRC
 
+=word-wrap= will wrap a line are wrapped at the space
+or tab character nearest to the right window edge.
+
+#+BEGIN_SRC emacs-lisp
+  (setq-default word-wrap t)
+#+END_SRC
+
 * Org
   
    | Key binding   | Description                                      |
