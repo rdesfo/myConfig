@@ -53,6 +53,12 @@ or tab character nearest to the right window edge.
 global-auto-revert-mode 1
 #+END_SRC
 
+=show-trailing-whitespace= ...(this one speaks for itself)
+
+#+BEGIN_SRC emacs-lisp
+(setq-default show-trailing-whitespace t)
+#+END_SRC
+
 * Org
   
    | Key binding   | Description                                      |
