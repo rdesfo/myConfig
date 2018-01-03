@@ -146,6 +146,7 @@ Use =tsdh-dark= theme
    [[https://commercialhaskell.github.io/intero/][Intero]] uses stack to install the required version of Intero for each project
 
    | Key binding | Description                                       |
+   |-------------+---------------------------------------------------|
    | M-.         | Jump to definition                                |
    | C-c C-i     | Show information of identifier at point           |
    | C-c C-t     | Show the type of thing at point, or the selection |
