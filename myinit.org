@@ -371,6 +371,19 @@ Use =tsdh-dark= theme
           )
    #+END_SRC
 
+** smartparens
+
+   [[https://github.com/Fuco1/smartparens][smartparens]] deals with parens pairs and tries to be smart about it
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package smartparens
+       :ensure t
+       :config
+       (require 'smartparens-config)
+       (add-hook 'emacs-lisp-mode-hook #'smartparens-mode)
+       )
+   #+END_SRC
+
 * Useful Snippets
 
   To find current major mode buffer paste the following
