@@ -293,18 +293,19 @@ Use =tsdh-dark= theme
           ("m" . elfeed-toggle-star)
           ("M" . elfeed-toggle-star)
   ))
+#+END_SRC
 
 ;; (use-package elfeed-goodies
 ;;   :ensure t
 ;;   :config
 ;;   (elfeed-goodies/setup))
 
+#+BEGIN_SRC emacs-lisp
 (use-package elfeed-org
   :ensure t
   :config
-  (elfeed-org)
-  (setq rmh-elfeed-org-files (list "~/.emacs.d/elfeed.org")))
-
+    (elfeed-org)
+    (setq rmh-elfeed-org-files (list "~/Documents/org/elfeed.org")))
 #+END_SRC
 
 ** hydra
