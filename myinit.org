@@ -307,6 +307,25 @@ Use =tsdh-dark= theme
 
 #+END_SRC
 
+** hydra
+
+   https://github.com/abo-abo/hydra#hydra-awesome
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package hydra
+       :ensure t)
+   #+END_SRC
+
+   #+BEGIN_SRC emacs-lisp
+     (defhydra hydra-myfiles nil
+       "files"
+       ("j" (find-file "~/Documents/org/journal.org") "journal")
+       ("i" (find-file "~/projects/myConfig/myinit.org") "emacs init")
+       ("n" (find-file "/sudo::/etc/nixos/configuration.nix") "nixos config"))
+
+       (global-set-key (kbd "C-x C-k 0") 'hydra-myfiles/body)
+   #+END_SRC
+
 ** magit
 
    =?= in magit window will bring up the =magit-dispatch-popup=,
