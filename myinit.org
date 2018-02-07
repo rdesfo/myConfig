@@ -50,7 +50,7 @@ or tab character nearest to the right window edge.
 =global-auto-revert-mode= will automatically revert your files to what's on disk.
 
 #+BEGIN_SRC emacs-lisp
-global-auto-revert-mode 1
+(setq-default global-auto-revert-mode 1)
 #+END_SRC
 
 =show-trailing-whitespace= ...(this one speaks for itself)
