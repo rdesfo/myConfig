@@ -144,6 +144,15 @@ Use =tsdh-dark= theme
        (eyebrowse-mode t))
    #+END_SRC
 
+** projectile
+
+   [[https://github.com/bbatsov/projectile][projectile]] is a project interaction library for Emacs.
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package projectile
+       :ensure t)
+   #+END_SRC
+
 ** interleave
 
    [[https://github.com/rudolfochrist/interleave][interleave]] presents a  pdf in emacs and opens a frame next to it
