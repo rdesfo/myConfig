@@ -132,6 +132,18 @@ Use =tsdh-dark= theme
   ))
 #+END_SRC
 
+** eyebrowse
+
+   [[https://github.com/wasamasa/eyebrowse][eyebrowse]] is a global minor mode for Emacs that allows you to
+   manage your window configurations in a simple manner
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package eyebrowse
+       :ensure t
+       :config
+       (eyebrowse-mode t))
+   #+END_SRC
+
 ** interleave
 
    [[https://github.com/rudolfochrist/interleave][interleave]] presents a  pdf in emacs and opens a frame next to it
