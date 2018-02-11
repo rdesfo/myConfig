@@ -132,6 +132,17 @@ Use =tsdh-dark= theme
   ))
 #+END_SRC
 
+** interleave
+
+   [[https://github.com/rudolfochrist/interleave][interleave]] presents a  pdf in emacs and opens a frame next to it
+   which allows you to take notes in org-mode and later jump to the
+   corresponding spot in the pdf
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package interleave
+       :ensure t)
+   #+END_SRC
+
 ** try
 
 =try= allows you to try packages without fully installing them
